@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Notes</title>
+    <style>
+        *{
+            
+            height: 100%;
+            margin: 0;
+            top: 0;
+        }
+        body{
+            background-image: url(/templates/hugo-juteau-xh_l2eGV4B4-unsplash.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* background-color: #000000; */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .todo-container{
+            /* opacity: 0.5; */
+            /* border-width: 0; */
+            /* outline: none; */
+            border-radius: 4rem;
+            height: 50vmin;
+            width: 50vmin;
+            /* border: 1px solid black; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #3b6064;
+        }
+        .top-title{
+            height: auto;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 40vmin;
+            width: 40vmin;
+        }
+        .form textarea{
+            border: none;
+            border-radius: 1rem;
+            width: 40vmin;
+            height: 20vmin;
+        }
+        .form input{
+            border: none;
+            border-radius: 1rem;
+            width: 40vmin;
+            height: 5vmin;
+        }
+        .form button{
+            height: 5vmin;
+            width: 10vmin;
+        }
+
+        input:focus , textarea:focus{
+            outline: none;
+            /* border: none; */
+        }
+        input::placeholder, textarea::placeholder{
+            font-family: sans-serif;
+            font-weight: bold;
+            padding-left: 2px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <div class="top-title">Add your notes</div>
+        <form  class="form" action="{% url 'add' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Heading...." name="heading">
+            <textarea name="description" id="" placeholder="Description....."></textarea>
+            <button>Add Note</button>
+        </form>
+    </div>
+</body>
+</html>
